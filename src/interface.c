@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "interface.h"
+
 
 void Welcome_window() {
   printf("\033[2J");
