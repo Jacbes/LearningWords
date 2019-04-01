@@ -32,3 +32,22 @@ void Input() {
     }
   }
 }
+
+int Info() {
+  int l;
+  printf("\033[2J");
+  printf("\033[0;0f");
+  File_input("info.txt");
+  while ((l != 1) && (l != 2)) {
+    scanf("%d", &l);
+    switch (l) {
+    case 1:
+      Welcome_window();
+      break;
+    case 2:
+      exit(0);
+    default:
+      printf("Error, try gain : ");
+    }
+  }
+}
