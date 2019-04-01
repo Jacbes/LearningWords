@@ -52,3 +52,16 @@ int Info() {
   }
 }
 
+void File_input(char *fname) {
+  FILE *file;
+  char result_string[322];
+  file = fopen(fname, "r");
+  if (file == NULL) {
+    printf("Error opening file '%s'", fname);
+    return 0;
+  }
+  while (fgets(result_string, sizeof(result_string), file)) {
+    printf("%s\n", result_string);
+  }
+  fclose(file);
+}
