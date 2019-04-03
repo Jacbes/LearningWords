@@ -17,3 +17,8 @@ int Info();
 #define H_FILE_INPUT
 void File_input(char *fname);
 #endif
+
+#ifndef H_TOPICS
+#define H_TOPICS
+void Learning_topics();
+#endif

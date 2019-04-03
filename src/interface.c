@@ -1,7 +1,35 @@
+#include "interface.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "interface.h"
 
+void Learning_topics() {
+  int l;
+  printf("\033[2J");
+  printf("\033[0;0f");
+  File_input("topics.txt");
+  while ((l != 1) && (l != 2) && (l != 3) && (l != 4) && (l != 5)) {
+    scanf("%d", &l);
+    switch (l) {
+    case 1:
+      printf("Soon...\n");
+      break;
+    case 2:
+      printf("Soon...\n");
+      break;
+    case 3:
+      printf("Soon...\n");
+      break;
+    case 4:
+      printf("Soon...\n");
+      break;
+    case 5:
+      Welcome_window();
+      break;
+    default:
+      printf("Error, try gain : ");
+    }
+  };
+}
 
 void Welcome_window() {
   printf("\033[2J");
@@ -19,9 +47,7 @@ void Input() {
     scanf("%d", &l);
     switch (l) {
     case 1:
-      printf("Soon...\n");
-      getchar();
-      Welcome_window();
+      Learning_topics();
       break;
     case 2:
       Info();
