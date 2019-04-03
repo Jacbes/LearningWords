@@ -1,6 +1,6 @@
-                            
-                           Welcome to the LearningWords
 
+                           Welcome to the LearningWords
+                           
                                      1) start
 
                                      2) info
