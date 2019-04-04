@@ -62,7 +62,7 @@ void Input() {
   }
 }
 
-int Info() {
+void Info() {
   int l;
   printf("\033[2J");
   printf("\033[0;0f");
@@ -87,7 +87,6 @@ void File_input(char *fname) {
   file = fopen(fname, "r");
   if (file == NULL) {
     printf("Error opening file '%s'", fname);
-    return 0;
   }
   while (fgets(result_string, sizeof(result_string), file)) {
     printf("%s\n", result_string);

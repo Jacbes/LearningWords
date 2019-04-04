@@ -10,7 +10,7 @@ void Input();
 
 #ifndef H_INFO
 #define H_INFO
-int Info();
+void Info();
 #endif
 
 #ifndef H_FILE_INPUT
