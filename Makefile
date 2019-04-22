@@ -1,13 +1,23 @@
-all: bin/prog
+CC = gcc
+CFLAGS = -Wall -Werror
+EXECUTABLE = prog
 
-bin/prog: build/main.o build/interface.o 
-	gcc -Wall -Werror build/main.o build/interface.o -o bin/prog
+all: bin/$(EXECUTABLE)
+
+bin/$(EXECUTABLE): build/main.o build/interface.o build/wdictionary.o build/string.o
+	$(CC) $(CFLAGS) $^ -o $@
 
 build/main.o: src/main.c
-	gcc -Wall -Werror -c src/main.c -o build/main.o
+	$(CC) $(CFLAGS) -c $< -o $@
 
 build/interface.o: src/interface.c
-	gcc -Wall -Werror -c src/interface.c -o build/interface.o
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build/wdictionary.o: src/wdictionary.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build/string.o: src/string.c
+	$(CC) $(CFALGS) -c $< -o $@
 
 .PHONY: clean
 

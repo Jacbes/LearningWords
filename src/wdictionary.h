@@ -1,13 +1,17 @@
-#ifndef DOCUMENTS_WDICTIONARY_H
-#define DOCUMENTS_WDICTIONARY_H
+#ifndef WDICTIONARY_H
+#define WDICTIONARY_H
 
-typedef struct dictonary {
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct dictionary {
     char* engword;
     char* rusword;
-    unsigned int theme;
+    char* theme;
 } dictionary;
 
-int count_lines(FILE* input);
-dictionary* dictionary_init(int lines);
+int words_count(FILE* input, int value);
+dictionary* dictionary_init(int words);
+dictionary* dictionary_read(dictionary* tabinit, int words, FILE* input);
 
-#endif // DOCUMENTS_WDICTIONARY_H
+#endif // WDICTIONARY_H
