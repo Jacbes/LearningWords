@@ -1,24 +1,16 @@
-#ifndef H_WELCOME
-#define H_WELCOME
-void Welcome_window();
-#endif
+#ifndef INTERFACE_H
+#define INTERFACE_H
 
-#ifndef H_INPUT
-#define H_INPUT
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 void Input();
-#endif
-
-#ifndef H_INFO
-#define H_INFO
+void Welcome_window();
 void Info();
-#endif
-
-#ifndef H_FILE_INPUT
-#define H_FILE_INPUT
 void File_input(char *fname);
-#endif
-
-#ifndef H_TOPICS
-#define H_TOPICS
 void Learning_topics();
+void Transition(int l);
+void Result(int corr_ans, int words);
+
 #endif
