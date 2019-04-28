@@ -1,4 +1,4 @@
-# LearningWords
+# LearningWords (Beta 0.1)
 [![Build Status](https://travis-ci.org/Jacbes/LearningWords.svg?branch=master)](https://travis-ci.org/Jacbes/LearningWords)
 ## Установка приложения
 Программа предназначена для работы в системах Linux.
