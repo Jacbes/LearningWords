@@ -15,13 +15,13 @@ void Learning_topics()
         case 1: {
             FILE* input = fopen("../bin/dictionary.txt", "r");
             int words = words_count(input, l);
-            printf("Считано строк %d\n", words);
+//            printf("Считано строк %d\n", words);
             dictionary* table = dictionary_init(words);
             dictionary_read(table, words, input);
             fclose(input);
-            printf("%s\n", table[0].engword);
-            printf("%s\n", table[0].rusword);
-            printf("%s\n", table[0].theme);
+
+            answers(table, words);
+
             break;
         }
         case 2:

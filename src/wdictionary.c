@@ -1,6 +1,11 @@
 #include "wdictionary.h"
 #include "string.h"
 
+int getrand(int min, int max)
+{
+    return (double)rand() / (RAND_MAX + 1.0) * (max - min) + min;
+}
+
 int words_count(FILE* input, int value)
 {
     int words = 0;
@@ -8,11 +13,11 @@ int words_count(FILE* input, int value)
     switch (value) {
     case 1: {
         while (!feof(input)) {
-            if ((fgetc(input) == '2') || (fgetc(input) == '3')
-                || (fgetc(input) == '4')) {
+            if (fgetc(input) == '\n') {
                 words++;
             }
         }
+        break;
     }
     case 2: {
         while (!feof(input)) {
@@ -20,6 +25,7 @@ int words_count(FILE* input, int value)
                 words++;
             }
         }
+        break;
     }
     case 3: {
         while (!feof(input)) {
@@ -27,6 +33,7 @@ int words_count(FILE* input, int value)
                 words++;
             }
         }
+        break;
     }
     case 4: {
         while (!feof(input)) {
@@ -34,6 +41,7 @@ int words_count(FILE* input, int value)
                 words++;
             }
         }
+        break;
     }
     }
 
@@ -84,4 +92,70 @@ dictionary* dictionary_read(dictionary* tabinit, int words, FILE* input)
     free(buf);
 
     return tabinit;
+}
+
+void dictionary_shuf(dictionary* tab, int words)
+{
+    int i, j;
+
+    dictionary* buf = dictionary_init(1);
+
+    for (i = 0; i < words; i++) {
+        j = getrand(0, i);
+        buf[0] = tab[i];
+        tab[i] = tab[j];
+        tab[j] = buf[0];
+    }
+
+    free(buf);
+}
+
+void answers(dictionary* tab, int words)
+{
+    srand(time(NULL));
+    dictionary_shuf(tab, words);
+    dictionary* var = dictionary_init(4);
+    int corr, num, numc, ans, corr_ans = 0;
+    int i, j, k;
+
+    for (k = 0; k < words; k++) {
+        corr = getrand(0, words - 1);
+        printf("Word is: %s\n\n", tab[corr].engword);
+
+        numc = getrand(0, 3);
+        var[numc].rusword = tab[corr].rusword;
+
+        for (i = 0; i < 4;) {
+            num = getrand(0, words);
+            if (i != numc) {
+                while (num == corr) {
+                    num = getrand(0, words);
+                }
+                if (num != corr) {
+                    var[i].rusword = tab[num].rusword;
+                    i++;
+                } else {
+                    i++;
+                }
+            } else {
+                i++;
+            }
+        }
+
+        for (j = 0; j < 4; j++) {
+            printf("%d) %s\t", j + 1, var[j].rusword);
+        }
+
+        printf("\nEnter answer (1, 2, 3, 4): ");
+        scanf("%d", &ans);
+
+        if (tab[corr].rusword == var[ans - 1].rusword) {
+            printf("++Correct!\n");
+            corr_ans++;
+        } else {
+            printf("--Wrong\n");
+        }
+    }
+
+    printf("\nAll - %d\nCorrect - %d\n", words, corr_ans);
 }
