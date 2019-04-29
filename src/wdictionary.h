@@ -14,7 +14,7 @@ typedef struct dictionary {
 int getrand(int min, int max);
 int words_count(FILE *input, int value);
 dictionary *dictionary_init(int words);
-dictionary *dictionary_read(dictionary *tabinit, int words, FILE *input);
+dictionary *dictionary_read(dictionary *tabinit, int words, FILE *input, int theme);
 void dictionary_shuf(dictionary *tab, int words);
 void answers(dictionary *tab, int words);
 
