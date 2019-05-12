@@ -82,10 +82,19 @@ dictionary_read(dictionary* tabinit, int words, FILE* input, int theme)
     char* buf = (char*)malloc(30 * sizeof(char));
     char* w[10];
     int i;
+    char juk[10] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
     for (i = 0; i < words;) {
         fscanf(input, "%s", buf);
         s_tok(buf, ';', w);
+        if ((str_chr(w[0], juk) != -1)) {
+            tabinit = NULL;
+            break;
+        }
+        if ((str_chr(w[1], juk) != -1)) {
+            tabinit = NULL;
+            break;
+        }
         scopy(w[0], tabinit[i].engword);
         scopy(w[1], tabinit[i].rusword);
         scopy(w[2], tabinit[i].theme);

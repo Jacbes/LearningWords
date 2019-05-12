@@ -1,6 +1,6 @@
 #include "../src/wdictionary.h"
 #include "../thirdparty/ctest.h"
-#include <string.h>
+#include "../src/string.h"
 
 CTEST(dictinory, fun_getrand)
 {
@@ -24,11 +24,11 @@ CTEST(dictinory, fun_getrand)
 CTEST(dictinory, fun_words_count) // считает без 1, но с цифрами строчки
 {
 	int value = 1;
-	FILE *input = fopen("dic_test.txt", "r");
+	FILE *input = fopen("../test/dic_test.txt", "r");
 
 	int real = words_count(input, value);
 	
-	const int expected = 4;
+	const int expected = 6;
 	
 	ASSERT_EQUAL(expected, real);
 
@@ -46,29 +46,21 @@ CTEST(dictinory, fun_dictionary_init)
 
 CTEST(dictinory, fun_dictionary_read) //выделяет массив структур
 {
-	FILE *input = fopen("dic_test.txt", "r");
+	FILE *input = fopen("../test/dic_test.txt", "r");
 	int value = 4;
 	int words = words_count(input, value);
 	dictionary* test = dictionary_init(words);
 
-	dictionary_read(test,words,input,value);
-    
-    int res = (strcmp(test[0].engword, "cook"));// если 0, то части равные, либо объявление cook через char
-    //if (strcmp(test[0].engword, "cook")) //(test[0].engword == "cook")
-	//{
-		//res = 1;
-	//}
+	test = dictionary_read(test,words,input,value);
 
-	int exp = 0;
-	
-    ASSERT_EQUAL(exp, res);
-	
+	ASSERT_NULL(test);
+	free(test);
 }
 
 CTEST(dictinory, fun_dictionary_shuf) //?
 {
-	FILE *input = fopen("dic_test.txt", "r");
-	int value = 4;
+	FILE *input = fopen("../text/dictionary.txt", "r");
+	int value = 1;
 	int words = words_count(input, value);
 	dictionary* test = dictionary_init(words);
 

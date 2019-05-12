@@ -1,25 +1,35 @@
 CC = gcc
 CFLAGS = -Wall -Werror
 EXECUTABLE = prog
+EXETEST = test
 
-all: bin/$(EXECUTABLE)
+all: bin/$(EXECUTABLE) bin/$(EXETEST)
 
-bin/$(EXECUTABLE): build/main.o build/interface.o build/wdictionary.o build/string.o
+bin/$(EXECUTABLE): build/prg/main.o build/prg/interface.o build/prg/wdictionary.o build/prg/string.o
 	$(CC) $(CFLAGS) $^ -o $@
 
-build/main.o: src/main.c
+bin/$(EXETEST): build/tst/main.o build/tst/wdictionary_test.o build/prg/interface.o build/prg/string.o build/prg/wdictionary.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+build/prg/main.o: src/main.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-build/interface.o: src/interface.c
+build/prg/interface.o: src/interface.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-build/wdictionary.o: src/wdictionary.c
+build/prg/wdictionary.o: src/wdictionary.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-build/string.o: src/string.c
+build/prg/string.o: src/string.c
 	$(CC) $(CFALGS) -c $< -o $@
+
+build/tst/main.o: test/main.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build/tst/wdictionary_test.o: test/wdictionary_test.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 
 clean:
-	rm -rf build/*.o
+	rm -rf build/prg/*.o build/tst/*.o
