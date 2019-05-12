@@ -128,8 +128,9 @@ void answers(dictionary* tab, int words)
     for (k = 0; k < words; k++) {
         printf("\033[2J");
         printf("\033[0;0f");
+        
+        corr = k;
 
-        corr = getrand(0, words - 1);
         printf("%d/%d\n", k + 1, words);
         printf("\n");
         printf("                                      %s\n\n",
@@ -140,17 +141,18 @@ void answers(dictionary* tab, int words)
         numc = getrand(0, 3);
         var[numc].rusword = tab[corr].rusword;
 
+        int wrg[3] = {-1, -1, -1};
+        wrg[0] = corr;
+        j = 1;
+        
         for (i = 0; i < 4;) {
-            num = getrand(0, words);
             if (i != numc) {
-                while (num == corr) {
-                    num = getrand(0, words);
-                }
-                if (num != corr) {
+                num = getrand(0, words);
+                if ((num != wrg[0]) && (num != wrg[1]) && (num != wrg[2])) {
                     var[i].rusword = tab[num].rusword;
+                    wrg[j] = num;
                     i++;
-                } else {
-                    i++;
+                    j++;
                 }
             } else {
                 i++;
