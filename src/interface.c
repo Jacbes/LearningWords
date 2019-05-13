@@ -41,8 +41,6 @@ void Learning_topics()
         case '5':
             Welcome_window();
             break;
-        default:
-            printf("Error, try gain : ");
         }
     }
 }
@@ -74,7 +72,6 @@ void Input()
             exit(0);
             break;
         default:
-            printf("Error, try gain : ");
             Welcome_window();
         }
     }
@@ -94,8 +91,6 @@ void Info()
             break;
         case '2':
             exit(0);
-        default:
-            printf("Error, try gain : ");
         }
     }
 }
@@ -142,8 +137,6 @@ void Result(int corr_ans, int words)
         case '2':
             exit(0);
             break;
-        default:
-            printf("Error, try gain : ");
         }
     }
 }
