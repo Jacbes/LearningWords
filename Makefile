@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror
-EXECUTABLE = prog
-EXETEST = test
+EXECUTABLE = LearningWords
+EXETEST = LearningWords-test
 
 all: bin/$(EXECUTABLE) bin/$(EXETEST)
 
