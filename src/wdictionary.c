@@ -2,6 +2,7 @@
 #include "interface.h"
 #include "string.h"
 
+
 int getrand(int min, int max)
 {
     return (double)rand() / (RAND_MAX + 1.0) * (max - min) + min;

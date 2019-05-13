@@ -21,7 +21,7 @@ int s_tok(char* str, char delim, char* ptr[])
         suf = suf + i + 1;
         ptr[j] = suf;
         j++;
-    }
+    } 
     return j;
 }
 
@@ -51,28 +51,6 @@ int scopy(char* s1, char* s2)
     }
 }
 
-int s_cmp(char* str_1, char* str_2)
-{
-    size_t count;
-    size_t length, length_1 = slen(str_1), length_2 = slen(str_2);
-
-    if (length_1 >= length_2) {
-        length = length_1;
-    } else {
-        length = length_2;
-    }
-    for (count = 0; count < length; count++) {
-        if (str_1[count] != str_2[count]) {
-            if (str_1[count] > str_2[count]) {
-                return 1;
-            } else if (str_1[count] < str_2[count]) {
-                return -1;
-            }
-        }
-    }
-    return 0;
-}
-
 int str_chr(char* str, char* ch)
 {
     int i, j;
@@ -87,17 +65,3 @@ int str_chr(char* str, char* ch)
     return -1;
 }
 
-int str_tok(char* str, char* delim, char** ptr)
-{
-    int i, j = 1;
-    char* suf = str;
-
-    ptr[0] = str;
-    while ((i = str_chr(suf, delim)) >= 0) {
-        suf[i] = '\0';
-        suf = suf + i + 1;
-        ptr[j] = suf;
-        j++;
-    }
-    return j;
-}
