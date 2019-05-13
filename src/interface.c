@@ -15,30 +15,30 @@ void Transition(int l)
 
 void Learning_topics()
 {
-    int l = 0;
+    char l;
     printf("\033[2J");
     printf("\033[0;0f");
     File_input("../text/topics.txt");
-    while ((l != 1) && (l != 2) && (l != 3) && (l != 4) && (l != 5)) {
-        scanf("%d", &l);
+    while ((l != '1') && (l != '2') && (l != '3') && (l != '4') && (l != '5')) {
+        scanf("%c", &l);
         switch (l) {
-        case 1: {
-            Transition(l);
+        case '1': {
+            Transition(1);
             break;
         }
-        case 2: {
-            Transition(l);
+        case '2': {
+            Transition(2);
             break;
         }
-        case 3: {
-            Transition(l);
+        case '3': {
+            Transition(3);
             break;
         }
-        case 4: {
-            Transition(l);
+        case '4': {
+            Transition(4);
             break;
         }
-        case 5:
+        case '5':
             Welcome_window();
             break;
         default:
@@ -60,17 +60,17 @@ void Welcome_window()
 
 void Input()
 {
-    int l = 0;
-    while ((l != 1) && (l != 2) && (l != 3)) {
-        scanf("%d", &l);
+    char l;
+    while ((l != '1') && (l != '2') && (l != '3')) {
+        scanf("%c", &l);
         switch (l) {
-        case 1:
+        case '1':
             Learning_topics();
             break;
-        case 2:
+        case '2':
             Info();
             break;
-        case 3:
+        case '3':
             exit(0);
             break;
         default:
@@ -82,17 +82,17 @@ void Input()
 
 void Info()
 {
-    int l = 0;
+    char l;
     printf("\033[2J");
     printf("\033[0;0f");
     File_input("../text/info.txt");
-    while ((l != 1) && (l != 2)) {
-        scanf("%d", &l);
+    while ((l != '1') && (l != '2')) {
+        scanf("%c", &l);
         switch (l) {
-        case 1:
+        case '1':
             Welcome_window();
             break;
-        case 2:
+        case '2':
             exit(0);
         default:
             printf("Error, try gain : ");
@@ -116,7 +116,7 @@ void File_input(char* fname)
 
 void Result(int corr_ans, int words)
 {
-    int l = 0;
+    char l;
     printf("\033[2J");
     printf("\033[0;0f");
     printf("\n");
@@ -132,14 +132,14 @@ void Result(int corr_ans, int words)
         printf("\n");
     }
     printf("\n                  1)Again                            2)Exit\n");
-    while ((l != 1) && (l != 2) && (l != 3) && (l != 4) && (l != 5)) {
-        scanf("%d", &l);
+    while ((l != '1') && (l != '2') && (l != '3') && (l != '4') && (l != '5')) {
+        scanf("%c", &l);
         switch (l) {
-        case 1: {
+        case '1': {
             Learning_topics();
             break;
         }
-        case 2:
+        case '2':
             exit(0);
             break;
         default:
