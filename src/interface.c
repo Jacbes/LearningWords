@@ -5,7 +5,7 @@
 
 void Transition(int l)
 {
-    FILE* input = fopen("../bin/dictionary.txt", "r");
+    FILE* input = fopen("../text/dictionary.txt", "r");
     int words = words_count(input, l);
     dictionary* table = dictionary_init(words);
     dictionary_read(table, words, input, l);
@@ -15,10 +15,10 @@ void Transition(int l)
 
 void Learning_topics()
 {
-    int l;
+    int l = 0;
     printf("\033[2J");
     printf("\033[0;0f");
-    File_input("topics.txt");
+    File_input("../text/topics.txt");
     while ((l != 1) && (l != 2) && (l != 3) && (l != 4) && (l != 5)) {
         scanf("%d", &l);
         switch (l) {
@@ -51,7 +51,7 @@ void Welcome_window()
 {
     printf("\033[2J");
     printf("\033[0;0f");
-    File_input("welcome.txt");
+    File_input("../text/welcome.txt");
     while (1) {
         Input();
         break;
@@ -82,10 +82,10 @@ void Input()
 
 void Info()
 {
-    int l;
+    int l = 0;
     printf("\033[2J");
     printf("\033[0;0f");
-    File_input("info.txt");
+    File_input("../text/info.txt");
     while ((l != 1) && (l != 2)) {
         scanf("%d", &l);
         switch (l) {
@@ -116,7 +116,7 @@ void File_input(char* fname)
 
 void Result(int corr_ans, int words)
 {
-    int l;
+    int l = 0;
     printf("\033[2J");
     printf("\033[0;0f");
     printf("\n");
