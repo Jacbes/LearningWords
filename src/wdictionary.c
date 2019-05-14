@@ -140,7 +140,7 @@ void answers(dictionary* tab, int words, int mode)
     if (mode == 1){
         if (words < 10) {
             printf("Ne hvataet slov v slovare\n");
-            exit(0);
+            Modes(1);
         } else {
             upd = 10;
         }
@@ -149,7 +149,7 @@ void answers(dictionary* tab, int words, int mode)
     if (mode == 2){
         if (words < 20) {
             printf("Ne hvataet slov v slovare\n");
-            exit(0);
+            Modes(2);
         } else {
             upd = 20;
         }
