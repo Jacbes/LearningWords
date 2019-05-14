@@ -1,15 +1,14 @@
 #include "interface.h"
-#include "wdictionary.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-#define KNRM "\x1B[0m" 
-#define KRED "\x1B[31m" 
-#define KGRN "\x1B[32m" 
-#define KYEL "\x1B[33m" 
-#define KBLU "\x1B[34m" 
-#define KMAG "\x1B[35m" 
-#define KCYN "\x1B[36m" 
+#define KNRM "\x1B[0m"
+#define KRED "\x1B[31m"
+#define KGRN "\x1B[32m"
+#define KYEL "\x1B[33m"
+#define KBLU "\x1B[34m"
+#define KMAG "\x1B[35m"
+#define KCYN "\x1B[36m"
 #define KWHT "\x1B[37m"
 
 void Transition(int l, int mode)
@@ -24,7 +23,7 @@ void Transition(int l, int mode)
 
 void Learning_topics()
 {
-    char l;
+    char l = '0';
     printf("\033[2J");
     printf("\033[0;0f");
     printf("%s  ____________________________________________________________________________  \n", KMAG);
@@ -67,7 +66,7 @@ void Learning_topics()
 
 void Modes(int tr)
 {
-    char l;
+    char l = '0';
     int mode = 0;
     printf("\033[2J");
     printf("\033[0;0f");
@@ -106,7 +105,7 @@ void Modes(int tr)
             break;
         }
     }
-}    
+}
 
 void Welcome_window()
 {
@@ -138,7 +137,7 @@ void Welcome_window()
 
 void Input()
 {
-    char l;
+    char l = '0';
     while ((l != '1') && (l != '2') && (l != '3')) {
         scanf("%c", &l);
         switch (l) {
@@ -159,7 +158,7 @@ void Input()
 
 void Info()
 {
-    char l;
+    char l = '0';
     printf("\033[2J");
     printf("\033[0;0f");
     File_input("../text/info.txt");
@@ -189,9 +188,9 @@ void File_input(char* fname)
     fclose(file);
 }
 
-void Result(int corr_ans, int words)
+void Result(int corr_ans, int words, dictionary* tab, char* cmass)
 {
-    char l;
+    char l = '0';
     printf("\033[2J");
     printf("\033[0;0f");
     printf("%s  ____________________________________________________________________________  \n", KMAG);
@@ -207,9 +206,7 @@ void Result(int corr_ans, int words)
     printf("                                                                        \n");
     printf("                                                                        \n");
     printf("                                                                        \n");
-    printf("\n                                 Correct  %d/%d\n",
-           corr_ans,
-           words);
+    printf("\n                                 Correct  %d/%d\n", corr_ans, words);
     for (int j = 0; j < 5; j++) {
         printf("\n");
     }
@@ -221,10 +218,18 @@ void Result(int corr_ans, int words)
             Learning_topics();
             break;
         }
-        case '2':
-            break;
+        case '2': {
+            for (int j = 0; j < words; j++) {
+                if (cmass[j] == '+') {
+                    printf("%s || correct\n", tab[j].engword);
+                } else {
+                    printf("%s || miss\n", tab[j].engword);
+                }
+            }
+            exit(0);
+        }
         case '3':
-            exit(0);    
+            exit(0);
         }
     }
 }

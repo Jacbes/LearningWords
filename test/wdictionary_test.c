@@ -1,6 +1,6 @@
+#include "../src/string.h"
 #include "../src/wdictionary.h"
 #include "../thirdparty/ctest.h"
-#include "../src/string.h" 
 
 //string.c
 CTEST(string, fun_slen) //Длина строки
@@ -13,7 +13,7 @@ CTEST(string, fun_slen) //Длина строки
 
 	const int expected = 25;
 	const int expected1 = 0;
-	
+
 	ASSERT_EQUAL(expected, real);
 	ASSERT_EQUAL(expected1, real1);
 }
@@ -107,7 +107,6 @@ CTEST(dictinory, fun_words_count) // считает без 1, но с цифра
 	const int expected = 6;
 	
 	ASSERT_EQUAL(expected, real);
-
 }
 
 CTEST(dictinory, fun_dictionary_init)
@@ -117,7 +116,6 @@ CTEST(dictinory, fun_dictionary_init)
 
 	ASSERT_NOT_NULL(test);
 	free(test);
-
 }
 
 CTEST(dictinory, fun_dictionary_read) //выделяет массив структур
@@ -146,17 +144,14 @@ CTEST(dictinory, fun_dictionary_shuf) //тусование русских сло
 
 	dictionary_shuf(test, words);
 
-    //int res = (strcmp(lord.engword,test[0].engword));
     int res = 0;
-    if (lord.engword != test[0].engword)
-	{
+    if (lord.engword != test[0].engword) {
 		res = 1;
 	}
 
 	int exp = 1;
 
 	ASSERT_EQUAL(exp, res);
-
 }
 
 

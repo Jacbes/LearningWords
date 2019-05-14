@@ -21,7 +21,7 @@ int s_tok(char* str, char delim, char* ptr[])
         suf = suf + i + 1;
         ptr[j] = suf;
         j++;
-    } 
+    }
     return j;
 }
 
@@ -64,4 +64,3 @@ int str_chr(char* str, char* ch)
     }
     return -1;
 }
-
