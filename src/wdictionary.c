@@ -135,7 +135,7 @@ void answers(dictionary* tab, int words, int mode)
     dictionary_shuf(tab, words);
     dictionary* var = dictionary_init(4);
     int corr, num, numc, ans, corr_ans = 0;
-    int i, k, j, upd;
+    int i, k, j, upd = 0;
 
     if (mode == 1){
         if (words < 10) {

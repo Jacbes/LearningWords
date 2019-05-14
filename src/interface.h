@@ -9,7 +9,7 @@
 void Input();
 void Welcome_window();
 void Info();
-void File_input(char *fname);
+void File_input(char* fname);
 void Learning_topics();
 void Modes(int tr);
 void Transition(int l, int mode);
