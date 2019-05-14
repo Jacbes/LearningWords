@@ -1,7 +1,6 @@
 #include "wdictionary.h"
 #include "interface.h"
 #include "string.h"
-#include <time.h>
 
 #define KMAG "\x1B[35m"
 #define KWHT "\x1B[37m"
@@ -139,16 +138,28 @@ void answers(dictionary* tab, int words, int mode)
     int i, k, j, upd;
 
     if (mode == 1){
-        upd = 10;  
+        if (words < 10) {
+            printf("Ne hvataet slov v slovare\n");
+            exit(0);
+        } else {
+            upd = 10;
+        }
     }
 
     if (mode == 2){
-        upd = 20;  
+        if (words < 20) {
+            printf("Ne hvataet slov v slovare\n");
+            exit(0);
+        } else {
+            upd = 20;
+        }
     }
 
     if (mode == 3){
         upd = words;  
     }
+
+    char cmass[upd];
 
     for (k = 0; k < upd; k++) {
         printf("\033[2J");
@@ -198,8 +209,17 @@ void answers(dictionary* tab, int words, int mode)
         }
 
         if (tab[corr].rusword == var[ans - 1].rusword) {
+            cmass[k] = '+';
+        } else {
+            cmass[k] = '-';
+        }
+    }
+
+    for (i = 0; i < upd; i++) {
+        if (cmass[i] == '+'){
             corr_ans++;
         }
     }
-    Result(corr_ans, upd);
+
+    Result(corr_ans, upd, tab, cmass);
 }

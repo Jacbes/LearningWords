@@ -1,4 +1,6 @@
 dist: xenial
 language: c
 compiler : gcc
-script: make
+script:
+  - make
+  - ./bin/LearningWords-test

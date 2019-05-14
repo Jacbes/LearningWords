@@ -1,5 +1,4 @@
 #include "interface.h"
-#include "wdictionary.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -189,7 +188,7 @@ void File_input(char* fname)
     fclose(file);
 }
 
-void Result(int corr_ans, int words)
+void Result(int corr_ans, int words, dictionary* tab, char* cmass)
 {
     char l;
     printf("\033[2J");
@@ -221,8 +220,16 @@ void Result(int corr_ans, int words)
             Learning_topics();
             break;
         }
-        case '2':
+        case '2': {
+            for (int j = 0; j < words; j++) {
+                if (cmass[j] == '+') {
+                    printf("%s || correct\n", tab[j].engword);
+                } else {
+                    printf("%s || miss\n", tab[j].engword);
+                }
+            }
             break;
+        }
         case '3':
             exit(0);    
         }
