@@ -10,7 +10,8 @@ void Welcome_window();
 void Info();
 void File_input(char *fname);
 void Learning_topics();
-void Transition(int l);
+void Modes(int tr);
+void Transition(int l, int mode);
 void Result(int corr_ans, int words);
 
 #endif
