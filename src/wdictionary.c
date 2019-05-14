@@ -1,7 +1,10 @@
 #include "wdictionary.h"
 #include "interface.h"
 #include "string.h"
+#include <time.h>
 
+#define KMAG "\x1B[35m"
+#define KWHT "\x1B[37m"
 
 int getrand(int min, int max)
 {
@@ -127,21 +130,33 @@ void dictionary_shuf(dictionary* tab, int words)
     free(buf);
 }
 
-void answers(dictionary* tab, int words)
+void answers(dictionary* tab, int words, int mode)
 {
     srand(time(NULL));
     dictionary_shuf(tab, words);
     dictionary* var = dictionary_init(4);
     int corr, num, numc, ans, corr_ans = 0;
-    int i, k, j;
+    int i, k, j, upd;
 
-    for (k = 0; k < words; k++) {
+    if (mode == 1){
+        upd = 10;  
+    }
+
+    if (mode == 2){
+        upd = 20;  
+    }
+
+    if (mode == 3){
+        upd = words;  
+    }
+
+    for (k = 0; k < upd; k++) {
         printf("\033[2J");
         printf("\033[0;0f");
         
         corr = k;
 
-        printf("%d/%d\n", k + 1, words);
+        printf("%s%d/%d\n%s", KMAG, k + 1, upd, KWHT);
         printf("\n");
         printf("                                      %s\n\n",
                tab[corr].engword);
@@ -186,5 +201,5 @@ void answers(dictionary* tab, int words)
             corr_ans++;
         }
     }
-    Result(corr_ans, words);
+    Result(corr_ans, upd);
 }

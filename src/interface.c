@@ -3,14 +3,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Transition(int l)
+#define KNRM "\x1B[0m" 
+#define KRED "\x1B[31m" 
+#define KGRN "\x1B[32m" 
+#define KYEL "\x1B[33m" 
+#define KBLU "\x1B[34m" 
+#define KMAG "\x1B[35m" 
+#define KCYN "\x1B[36m" 
+#define KWHT "\x1B[37m"
+
+void Transition(int l, int mode)
 {
     FILE* input = fopen("../text/dictionary.txt", "r");
     int words = words_count(input, l);
     dictionary* table = dictionary_init(words);
     dictionary_read(table, words, input, l);
     fclose(input);
-    answers(table, words);
+    answers(table, words, mode);
 }
 
 void Learning_topics()
@@ -18,24 +27,35 @@ void Learning_topics()
     char l;
     printf("\033[2J");
     printf("\033[0;0f");
+    printf("%s  ____________________________________________________________________________  \n", KMAG);
+    printf("//____________________________________________________________________________\\\\\n");
+    printf("||                                                                            ||\n");
+    printf("||     BBBBBBBBB  BBB   BBB  BBBBBBBB  BBB         BBB  BBBBBBBB   BBBBBB     ||\n");
+    printf("||        BBB     BBB   BBB  BBB       BBBBBB   BBBBBB  BBB       BBB         ||\n");
+    printf("||        BBB     BBBBBBBBB  BBBBBBBB  BBB  BB BB   BB  BBBBBBBB   BBBBB      ||\n");
+    printf("||        BBB     BBB   BBB  BBB       BBB   BBB    BB  BBB           BBB     ||\n");
+    printf("||        BBB     BBB   BBB  BBBBBBBB  BBB          BB  BBBBBBBB  BBBBBB      ||\n");
+    printf("||____________________________________________________________________________||\n");
+    printf("\\\\____________________________________________________________________________//%s\n", KWHT);
+    printf("                                                                        \n");
     File_input("../text/topics.txt");
     while ((l != '1') && (l != '2') && (l != '3') && (l != '4') && (l != '5')) {
         scanf("%c", &l);
         switch (l) {
         case '1': {
-            Transition(1);
+            Modes(1);
             break;
         }
         case '2': {
-            Transition(2);
+            Modes(2);
             break;
         }
         case '3': {
-            Transition(3);
+            Modes(3);
             break;
         }
         case '4': {
-            Transition(4);
+            Modes(4);
             break;
         }
         case '5':
@@ -45,10 +65,70 @@ void Learning_topics()
     }
 }
 
+void Modes(int tr)
+{
+    char l;
+    int mode = 0;
+    printf("\033[2J");
+    printf("\033[0;0f");
+    printf("%s  ____________________________________________________________________________  \n", KMAG);
+    printf("//____________________________________________________________________________\\\\\n");
+    printf("||                                                                            ||\n");
+    printf("||       BBBBBB   BBBBBB    BBBBBBBB    BBBBBBBB     BBBBBBB    BBBBBBB       ||\n");
+    printf("||       BBB BBB BBB BBB   BBB    BBB   BBB    BB    BBB       BBB            ||\n");
+    printf("||       BBB  BBBBB  BBB   BBB    BBB   BBB     BB   BBBBBBB    BBBBBB        ||\n");
+    printf("||       BBB         BBB   BBB    BBB   BBB    BB    BBB            BBB       ||\n");
+    printf("||       BBB         BBB    BBBBBBBB    BBBBBBBB     BBBBBBB   BBBBBBB        ||\n");
+    printf("||____________________________________________________________________________||\n");
+    printf("\\\\____________________________________________________________________________//%s\n", KWHT);
+    printf("                                                                        \n");
+    File_input("../text/modes.txt");
+    while ((l != '1') && (l != '2') && (l != '3') && (l != '4') && (l != '5')) {
+        scanf("%c", &l);
+        switch (l) {
+        case '1': {
+            mode = 1;
+            Transition(tr, mode);
+            break;
+        }
+        case '2': {
+            mode = 2;
+            Transition(tr, mode);
+            break;
+        }
+        case '3': {
+            mode = 3;
+            Transition(tr, mode);
+            break;
+        }
+        case '4':
+            Learning_topics();
+            break;
+        }
+    }
+}    
+
 void Welcome_window()
 {
     printf("\033[2J");
     printf("\033[0;0f");
+    printf("%s  ____________________________________________________________________________  \n", KMAG);
+    printf("//____________________________________________________________________________\\\\\n");
+    printf("||                                                                            ||\n");
+    printf("||     BB      BBBBBB     BBB     BBBBBB   BBBB  BB  BB  BBBB  BB   BBBBBBB   ||\n");
+    printf("||     BB      BB        BB BB    BB   BB  BB BB BB  BB  BB BB BB  BB         ||\n");
+    printf("||     BB      BBBBBB   BB   BB   BBBBBB   BB  BBBB  BB  BB  BBBB  BB   BB    ||\n");
+    printf("||     BB      BB       BBBBBBB   BB  BB   BB   BBB  BB  BB   BBB  BB    BB   ||\n");
+    printf("||     BBBBBB  BBBBBB  BB     BB  BB   BB  BB    BB  BB  BB    BB   BBBBBB    ||\n");
+    printf("||                                                                            ||\n");
+    printf("||            BB               BB   BBBBBB   BBBBBB   BBBBBB    BBBBB         ||\n");
+    printf("||             BB     BBB     BB   BB    BB  BB   BB  BB   BB  BB             ||\n");
+    printf("||              BB   BB BB   BB    BB    BB  BBBBBB   BB    B  BBBBB          ||\n");
+    printf("||               BB BB   BB BB     BB    BB  BB  BB   BB   BB      BB         ||\n");
+    printf("||                BBB     BBB       BBBBBB   BB   BB  BBBBBB   BBBBBB         ||\n");
+    printf("||____________________________________________________________________________||\n");
+    printf("\\\\____________________________________________________________________________//%s\n", KWHT);
+    printf("                                                                        \n");
     File_input("../text/welcome.txt");
     while (1) {
         Input();
@@ -114,20 +194,27 @@ void Result(int corr_ans, int words)
     char l;
     printf("\033[2J");
     printf("\033[0;0f");
-    printf("\n");
-    printf("\n");
-    printf("                                    Results\n");
-    for (int j = 0; j < 5; j++) {
-        printf("\n");
-    }
+    printf("%s  ____________________________________________________________________________  \n", KMAG);
+    printf("//____________________________________________________________________________\\\\\n");
+    printf("||                                                                            ||\n");
+    printf("||  BBBBBBBB   BBBBBBBB  BBBBBBBB  BBB     BBB  BBB     BBBBBBBBB  BBBBBBBB   ||\n");
+    printf("||  BBB   BBB  BBB       BBB       BBB     BBB  BBB        BBB     BBB        ||\n");
+    printf("||  BBBBBBBB   BBBBBBB    BBBBBB   BBB     BBB  BBB        BBB      BBBBBB    ||\n");
+    printf("||  BBB  BBB   BBB            BBB  BBB     BBB  BBB        BBB          BBB   ||\n");
+    printf("||  BBB   BBB  BBBBBBBB  BBBBBBBB    BBBBBBB    BBBBBBB    BBB     BBBBBBBB   ||\n");
+    printf("||____________________________________________________________________________||\n");
+    printf("\\\\____________________________________________________________________________//%s\n", KWHT);
+    printf("                                                                        \n");
+    printf("                                                                        \n");
+    printf("                                                                        \n");
     printf("\n                                 Correct  %d/%d\n",
            corr_ans,
            words);
-    for (int j = 0; j < 10; j++) {
+    for (int j = 0; j < 5; j++) {
         printf("\n");
     }
-    printf("\n                  1)Again                            2)Exit\n");
-    while ((l != '1') && (l != '2') && (l != '3') && (l != '4') && (l != '5')) {
+    printf("\n                  1)Again          2)Mistakes         3)Exit\n");
+    while ((l != '1') && (l != '2') && (l != '3')) {
         scanf("%c", &l);
         switch (l) {
         case '1': {
@@ -135,8 +222,9 @@ void Result(int corr_ans, int words)
             break;
         }
         case '2':
-            exit(0);
             break;
+        case '3':
+            exit(0);    
         }
     }
 }
