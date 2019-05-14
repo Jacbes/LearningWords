@@ -31,9 +31,9 @@ void Learning_topics()
     printf("||                                                                            ||\n");
     printf("||     BBBBBBBBB  BBB   BBB  BBBBBBBB  BBB         BBB  BBBBBBBB   BBBBBB     ||\n");
     printf("||        BBB     BBB   BBB  BBB       BBBBBB   BBBBBB  BBB       BBB         ||\n");
-    printf("||        BBB     BBBBBBBBB  BBBBBBBB  BBB  BB BB   BB  BBBBBBBB   BBBBB      ||\n");
-    printf("||        BBB     BBB   BBB  BBB       BBB   BBB    BB  BBB           BBB     ||\n");
-    printf("||        BBB     BBB   BBB  BBBBBBBB  BBB          BB  BBBBBBBB  BBBBBB      ||\n");
+    printf("||        BBB     BBBBBBBBB  BBBBBBBB  BBB  BB BB  BBB  BBBBBBBB   BBBBB      ||\n");
+    printf("||        BBB     BBB   BBB  BBB       BBB   BBB   BBB  BBB           BBB     ||\n");
+    printf("||        BBB     BBB   BBB  BBBBBBBB  BBB         BBB  BBBBBBBB  BBBBBB      ||\n");
     printf("||____________________________________________________________________________||\n");
     printf("\\\\____________________________________________________________________________//%s\n", KWHT);
     printf("                                                                        \n");
@@ -219,17 +219,36 @@ void Result(int corr_ans, int words, dictionary* tab, char* cmass)
             break;
         }
         case '2': {
-            for (int j = 0; j < words; j++) {
-                if (cmass[j] == '+') {
-                    printf("%s || correct\n", tab[j].engword);
-                } else {
-                    printf("%s || miss\n", tab[j].engword);
-                }
-            }
-            exit(0);
+            Mistakes(corr_ans, words, tab, cmass);
         }
         case '3':
             exit(0);
         }
+    }
+}
+
+void Mistakes(int corr_ans, int words, dictionary* tab, char* cmass) {
+    char l = '0';
+    printf("\033[2J");
+    printf("\033[0;0f");
+    printf("\n");
+    for (int j = 0; j < words; j++) {
+        if (cmass[j] == '+') {
+            printf("                  %12s || %scorrect%s\n", tab[j].engword, KGRN, KWHT);
+        } else {
+            printf("                  %12s || %smiss   %sright - %s%s\n", tab[j].engword, KRED, KYEL, tab[j].rusword, KWHT);
+        }
+    }
+    l = '0';
+    printf("\n");
+    printf("\n");
+    printf("\n                                     1)back\n");
+    while (l != '1') {
+        scanf("%c", &l);
+        switch (l) {
+        case '1':
+            Result(corr_ans, words, tab, cmass);
+            break;   
+        }               
     }
 }
