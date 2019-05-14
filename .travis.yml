@@ -3,4 +3,4 @@ language: c
 compiler : gcc
 script:
   - make
-  - ./bin/LearningWords-test
+  - cd bin/ && ./LearningWords-test
