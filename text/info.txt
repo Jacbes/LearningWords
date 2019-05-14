@@ -1,12 +1,11 @@
-                                  
-                                       Info
-      The program helps to learn English words. The output of English 
-      words occurs in the console window.
-      To start click start.
-      After selecting the start field, the user is given the   choice of
-      learning the words:
-          -Learning random words.
-          -Nouns. 
-          -Adjectives.  
-          -Verbs.
-                 1) back                                2) exit
+||                                                                            ||
+||                                    Info                                    ||
+||    The program helps to learn English words. The output of English         ||
+||    words occurs in the console window. To start click start.               ||
+||    After selecting the start field, the user is given the   choice of      ||
+||    learning the words:                                                     ||
+||        -Learning random words.                                             ||
+||        -Nouns.                                                             ||
+||        -Adjectives.                                                        ||
+||        -Verbs.                                                             ||
+||               1) back                                2) exit               ||
