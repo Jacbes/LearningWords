@@ -228,7 +228,7 @@ void Result(int corr_ans, int words, dictionary* tab, char* cmass)
                     printf("%s || miss\n", tab[j].engword);
                 }
             }
-            break;
+            exit(0);
         }
         case '3':
             exit(0);    
