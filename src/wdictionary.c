@@ -139,7 +139,7 @@ void answers(dictionary* tab, int words, int mode)
 
     if (mode == 1){
         if (words < 10) {
-            printf("Ne hvataet slov v slovare\n");
+            printf("There are not enough words in the dictionary.\n");
             Modes(1);
         } else {
             upd = 10;
@@ -148,7 +148,7 @@ void answers(dictionary* tab, int words, int mode)
 
     if (mode == 2){
         if (words < 20) {
-            printf("Ne hvataet slov v slovare\n");
+            printf("There are not enough words in the dictionary.\n");
             Modes(2);
         } else {
             upd = 20;
@@ -156,8 +156,18 @@ void answers(dictionary* tab, int words, int mode)
     }
 
     if (mode == 3){
-        upd = words;  
+        upd = words;
     }
+
+    printf("Remember the words.\n");
+    for (i = 0; i < upd; i++) {
+        printf("\t%s || %s\n", tab[i].engword, tab[i].rusword);
+    }
+    printf("To get started, click Enter\n");
+    getchar();
+    getchar();
+
+    dictionary_shuf(tab, upd);
 
     char cmass[upd];
 
