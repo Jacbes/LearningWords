@@ -26,6 +26,14 @@ git clone https://github.com/Jacbes/LearningWords.git && cd LearningWords && mak
 3. Adjectives
 4. Verbs
 ```
+Далее можно выбрать какое колличество слов вы хотите заучить.
+```
+1. 10 words
+2. 20 words
+3. All words
+```
+Перед тестом выводятся слова, которые будут в этом тесте, для того чтобы их запомнить.
+
 После выбора заучивания слов на экран будет выводиться слово на английском языке и четыре возможных перевода данного слова.
 ```
 book
@@ -40,4 +48,17 @@ book
 ```
 Correct 5/10
 ```
-Также можно посмотреть в каких словах были допущенны ошибки.
+Также после теста можно посмотреть в каких словах были допущенны ошибки.
+```
+silver || miss   right - серебро
+onion || miss   right - лук
+car || correct
+ship || miss   right - корабль
+flash || miss   right - вспышка
+phone || miss   right - телефон
+flippers || correct
+destiny || miss   right - судьба
+cucumber || miss   right - огурец
+battle || correct
+```
+Далее можно повторить тест или выйти из программы.
