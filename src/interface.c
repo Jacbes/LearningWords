@@ -232,6 +232,8 @@ void Mistakes(int corr_ans, int words, dictionary* tab, char* cmass) {
     printf("\033[2J");
     printf("\033[0;0f");
     printf("\n");
+    printf("%s  ____________________________________________________________________________%s  \n", KMAG, KWHT);
+    
     for (int j = 0; j < words; j++) {
         if (cmass[j] == '+') {
             printf("                  %12s || %scorrect%s\n", tab[j].engword, KGRN, KWHT);
@@ -239,6 +241,7 @@ void Mistakes(int corr_ans, int words, dictionary* tab, char* cmass) {
             printf("                  %12s || %smiss   %sright - %s%s\n", tab[j].engword, KRED, KYEL, tab[j].rusword, KWHT);
         }
     }
+    printf("%s\\\\____________________________________________________________________________//%s\n", KMAG, KWHT);
     l = '0';
     printf("\n");
     printf("\n");

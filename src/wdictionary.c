@@ -159,11 +159,19 @@ void answers(dictionary* tab, int words, int mode)
         upd = words;
     }
 
-    printf("Remember the words.\n");
+    printf("\033[2J");
+    printf("\033[0;0f");
+    printf("\n");
+    printf("                               Remember the words.\n");
+    printf("%s  ____________________________________________________________________________%s  \n", KMAG, KWHT);
+    printf("\n");
     for (i = 0; i < upd; i++) {
-        printf("\t%s || %s\n", tab[i].engword, tab[i].rusword);
+        printf("                          %12s || %s\n", tab[i].engword, tab[i].rusword);
     }
-    printf("To get started, click Enter\n");
+    printf("\n");
+    printf("%s\\\\____________________________________________________________________________//%s\n", KMAG, KWHT);
+    printf("\n");
+    printf("                           To get started, click Enter\n");
     getchar();
     getchar();
 
@@ -179,7 +187,7 @@ void answers(dictionary* tab, int words, int mode)
 
         printf("%s%d/%d\n%s", KMAG, k + 1, upd, KWHT);
         printf("\n");
-        printf("                                      %s\n\n",
+        printf("                                    %s\n\n",
                tab[corr].engword);
         printf("\n");
         printf("\n");
@@ -212,7 +220,7 @@ void answers(dictionary* tab, int words, int mode)
         for (j = 0; j < 3; j++) {
             printf("\n");
         }
-        printf("\nEnter answer (1, 2, 3, 4) or 0 for exit: ");
+        printf("\n                  Enter answer (1, 2, 3, 4) or 0 for exit: ");
         scanf("%d", &ans);
         if (ans == 0) {
             break;
